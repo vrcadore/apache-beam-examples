@@ -1,0 +1,41 @@
+[project]
+name = "apache-beam-examples"
+version = "0.1.0"
+description = "Apache Beam Examples"
+authors = [
+    {name = "Vinicius Cadore", email = "vrcadore@gmail.com"},
+]
+dependencies = [
+    "pandas>=1.5.1",
+]
+requires-python = ">=3.8"
+license = {text = "MIT"}
+[project.optional-dependencies]
+
+[build-system]
+requires = ["pdm-pep517>=1.0.0"]
+build-backend = "pdm.pep517.api"
+
+[tool]
+[tool.pdm]
+[tool.pdm.dev-dependencies]
+dev = [
+    "pre-commit>=2.20.0",
+    "apache-beam[gcp]>=2.42.0",
+    "click>=8.1.3",
+    "pytest>=7.1.3",
+    "black>=22.10.0",
+]
+
+# pyproject.toml
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q"
+filterwarnings = "ignore::DeprecationWarning"
+testpaths = [
+    "tests",
+]
+markers = [
+    "pipelines",
+    "components",
+]
